@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - SmartTrash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  {% include 'common/navbar.html' %}
+
+  <!-- Main Section -->
+  <div class="container mx-auto px-6 py-12">
+    <h1 class="text-4xl font-extrabold text-center text-indigo-600 mb-10">Welcome to SmartTrash Dashboard</h1>
+
+    <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-6">
+
+      <!-- Card 1: Raise Request -->
+      <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+        <img src="{% static 'images/request.png' %}" alt="Request" class="w-24 mx-auto mb-4">
+        <h2 class="text-2xl font-semibold mb-2">Raise Pickup Request</h2>
+        <p class="text-gray-600 mb-4">Schedule a waste pickup from your home or business location.</p>
+        <a href="/raise-request/"
+          class="bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-5 rounded-full font-medium transition">Request
+          Pickup</a>
+      </div>
+
+      <!-- Card 2: My Requests -->
+      <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+        <img src="{% static 'images/history.png' %}" alt="My Requests" class="w-24 mx-auto mb-4">
+        <h2 class="text-2xl font-semibold mb-2">View My Requests</h2>
+        <p class="text-gray-600 mb-4">Track the status of your submitted waste management requests.</p>
+        <a href="/my-requests/"
+          class="bg-green-500 hover:bg-green-700 text-white py-2 px-5 rounded-full font-medium transition">View
+          History</a>
+      </div>
+
+      <!-- Card 3: Logout -->
+      <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+        <img src="{% static 'images/logout.png' %}" alt="Logout" class="w-24 mx-auto mb-4">
+        <h2 class="text-2xl font-semibold mb-2">Logout</h2>
+        <p class="text-gray-600 mb-4">End your session and log out securely from SmartTrash.</p>
+        <a href="/logout/"
+          class="bg-red-500 hover:bg-red-700 text-white py-2 px-5 rounded-full font-medium transition">Logout</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  {% include 'common/footer.html' %}
+</body>
+
+</html>

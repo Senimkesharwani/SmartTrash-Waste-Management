@@ -1,0 +1,138 @@
+{% load static %}
+{% include 'common/head.html' %}
+{% include 'common/navbar.html' %}
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+
+      <!-- Left content -->
+      <div
+        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-extrabold text-gray-900">
+          Innovative Waste Management for
+          <br class="hidden lg:inline-block">Cleaner Tomorrow
+        </h1>
+        <p class="mb-8 leading-relaxed text-gray-600">
+          SmartTrash revolutionizes waste management with smart technology and sustainable practices.
+          Efficient sorting and processing reduce environmental impact and promote recycling,
+          transforming waste into valuable resources for a cleaner, greener future.
+        </p>
+        <div class="flex justify-center">
+          <a href="/login/">
+            <button
+              class="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded-lg text-lg transition-all">Login</button>
+          </a>
+          <a href="/signup/">
+            <button
+              class="ml-4 inline-flex text-gray-800 bg-gray-100 border border-gray-200 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-lg text-lg transition-all">Signup</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <img class="object-cover object-center rounded-2xl shadow-lg"
+          alt="Smart Waste Management"
+          src="{% static 'public/images/homepage.jpg' %}">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 pt-8 mx-auto">
+      <div class="text-center mb-20">
+        <h1 class="sm:text-3xl text-2xl font-bold title-font text-gray-900 mb-4">
+          Smart, Sustainable, Scalable
+        </h1>
+        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500">
+          Discover how SmartTrash helps cities and communities achieve sustainability goals
+          through innovative waste management technologies.
+        </p>
+        <div class="flex mt-6 justify-center">
+          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+        </div>
+      </div>
+
+      <div class="container px-5 mx-auto flex flex-wrap">
+        <!-- Left Image -->
+        <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+          <img alt="feature" class="object-cover object-center w-full rounded-lg shadow-md"
+            src="{% static 'public/images/bin2.jpg' %}">
+        </div>
+
+        <!-- Feature Blocks -->
+        <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+
+          <!-- Feature 1 -->
+          <div class="flex flex-col mb-10 lg:items-start items-center">
+            <div
+              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-6 h-6" viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <div class="flex-grow">
+              <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">Smart Bins</h2>
+              <p class="leading-relaxed text-base">
+                IoT-powered smart bins track fill levels and optimize waste collection routes
+                to save time, fuel, and reduce emissions.
+              </p>
+              <a class="mt-3 text-indigo-500 inline-flex items-center hover:underline cursor-pointer">Learn More
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="flex flex-col mb-10 lg:items-start items-center">
+            <div
+              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-6 h-6" viewBox="0 0 24 24">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+              </svg>
+            </div>
+            <div class="flex-grow">
+              <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">Recycling Analytics</h2>
+              <p class="leading-relaxed text-base">
+                SmartTrash analyzes recycling patterns, helping cities improve waste segregation
+                and maximize recyclable material recovery.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="flex flex-col mb-10 lg:items-start items-center">
+            <div
+              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-6 h-6" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="flex-grow">
+              <h2 class="text-gray-900 text-lg title-font font-semibold mb-3">Community Engagement</h2>
+              <p class="leading-relaxed text-base">
+                Engage citizens through reward-based recycling programs and awareness campaigns
+                for cleaner neighborhoods.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  {% include 'common/footer.html' %}
+</body>
+</html>

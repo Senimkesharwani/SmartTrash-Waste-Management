@@ -1,0 +1,211 @@
+{% load static %}
+{% include 'common/head.html' %}
+{% include 'common/navbar.html' %}
+
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="/" class="flex items-center">
+        <img src="{% static 'public/images/bin.png' %}" class="h-8 me-3" alt="Logo" />
+        <span class="text-xl font-extrabold sm:text-2xl whitespace-nowrap dark:text-white">SmartTrash</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+    <ul class="space-y-2 font-medium">
+      <li><a href="/admin/dashboard/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">Dashboard</a></li>
+      <li><a href="/admin/all-requests/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">All Requests</a></li>
+      <li><a href="/admin/create-driver/" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-100 dark:text-white">Create Driver</a></li>
+      <li><a href="/admin/all-drivers/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">All Drivers</a></li>
+      <li><a href="/admin/logout/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">Logout</a></li>
+    </ul>
+  </div>
+</aside>
+
+<div class="p-4 sm:ml-64">
+  <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 pt-12">
+    <!-- server-side messages fallback (non-AJAX) -->
+    {% if messages %}
+      <div class="mb-4">
+        {% for message in messages %}
+          <div class="p-4 text-white rounded-lg {% if message.tags == 'success' %}bg-green-500{% else %}bg-red-500{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="container max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6">Add New Driver</h1>
+
+      <!-- FORM: action posts to the view named 'admin_create_driver' -->
+      <form id="createDriverForm" method="POST" action="{% url 'admin_create_driver' %}">
+        {% csrf_token %}
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Driver Name:</label>
+          <input type="text" name="name" id="name" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-name"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Email:</label>
+          <input type="email" name="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-email"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Phone Number:</label>
+          <input type="text" name="phone" id="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-phone"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Driver License:</label>
+          <input type="text" name="license" id="license" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-license"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Vehicle Number:</label>
+          <input type="text" name="vehicle" id="vehicle" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-vehicle"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Vehicle Type:</label>
+          <select name="vehicle_type" id="vehicle_type" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            <option value="">Select Vehicle Type</option>
+            <option value="Truck">Truck</option>
+            <option value="Van">Van</option>
+            <option value="Car">Car</option>
+            <option value="Motorcycle">Motorcycle</option>
+          </select>
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-vehicle_type"></p>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Password:</label>
+          <input type="password" name="password" id="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-password"></p>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 font-bold mb-2">Confirm Password:</label>
+          <input type="password" name="confirm_password" id="confirm_password" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <p class="mt-1 text-sm text-red-600 hidden" id="err-confirm_password"></p>
+        </div>
+
+        <div class="flex justify-center">
+          <button id="addDriverBtn" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full">Add Driver</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% include 'common/footer.html' %}
+
+<!-- SUCCESS MODAL -->
+<div id="driverSuccessModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-[480px] text-center">
+    <div class="flex justify-center mb-4">
+      <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+        <svg width="40" height="40" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 29l-7-7 2.5-2.5L20 24l9.5-9.5L32 17l-12 12z"/>
+        </svg>
+      </div>
+    </div>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Driver Added</h2>
+    <p id="driverSuccessMessage" class="text-gray-600 mb-6"></p>
+    <button id="closeDriverSuccess" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg">OK</button>
+  </div>
+</div>
+
+<script>
+  // Read csrf token from cookie
+  function getCookie(name) {
+    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
+
+  const form = document.getElementById('createDriverForm');
+
+  form.addEventListener('submit', async function (e) {
+    // try AJAX submit; if fetch fails, browser will fallback to normal submit (we prevent default)
+    e.preventDefault();
+
+    // clear previous errors
+    document.querySelectorAll('[id^="err-"]').forEach(el => { el.innerText = ''; el.classList.add('hidden'); });
+
+    // client-side confirm-password check
+    const password = document.getElementById('password').value;
+    const confirm_password = document.getElementById('confirm_password').value;
+    if (password && confirm_password && password !== confirm_password) {
+      const el = document.getElementById('err-confirm_password');
+      el.innerText = "Passwords do not match.";
+      el.classList.remove('hidden');
+      return;
+    }
+
+    const url = form.getAttribute('action');
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: formData
+      });
+
+      // If server returns non-JSON (e.g. HTML redirect), handle gracefully
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.indexOf('application/json') === -1) {
+        // non-JSON response -> reload page (fallback)
+        return location.reload();
+      }
+
+      const data = await res.json();
+
+      if (data.isOK) {
+        // show success modal
+        document.getElementById('driverSuccessMessage').innerText = data.msg || 'Driver added successfully.';
+        document.getElementById('driverSuccessModal').classList.remove('hidden');
+        form.reset();
+      } else {
+        // show field errors (data.errors)
+        if (data.errors) {
+          Object.keys(data.errors).forEach(k => {
+            const errEl = document.getElementById('err-' + k);
+            if (errEl) {
+              errEl.innerText = data.errors[k];
+              errEl.classList.remove('hidden');
+            }
+          });
+        } else {
+          // general message
+          alert(data.msg || 'Failed to add driver.');
+        }
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert('Network error. Please try again.');
+    }
+  });
+
+  document.getElementById('closeDriverSuccess').addEventListener('click', function () {
+    document.getElementById('driverSuccessModal').classList.add('hidden');
+    // optionally redirect to driver list:
+    // window.location.href = '/admin/all-drivers/';
+  });
+</script>
+
+</body>
+</html>

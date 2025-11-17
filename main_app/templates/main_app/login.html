@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login - SmartTrash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  {% include 'common/navbar.html' %}
+
+  <!-- Main Login Section -->
+  <main class="flex-grow flex justify-center items-center px-4 py-12">
+    <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+      <div class="text-center mb-8">
+        <img src="{% static 'images/bin.png' %}" alt="SmartTrash Logo" class="w-16 mx-auto mb-3">
+        <h1 class="text-3xl font-extrabold text-indigo-600">User Login</h1>
+        <p class="text-gray-500 mt-2">Welcome back! Please enter your details.</p>
+      </div>
+
+      <form method="post" action="/login_process/">
+        {% csrf_token %}
+        <div class="mb-5">
+          <label for="number" class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+          <input type="text" id="number" name="number" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
+            placeholder="Enter your number">
+        </div>
+
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+          <input type="password" id="password" name="password" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
+            placeholder="Enter your password">
+        </div>
+
+        <button type="submit"
+          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+          Login
+        </button>
+      </form>
+
+      <p class="text-center text-gray-600 mt-6 text-sm">
+        Don’t have an account?
+        <a href="/signup/" class="text-indigo-600 hover:underline font-semibold">Sign Up</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  {% include 'common/footer.html' %}
+</body>
+
+</html>

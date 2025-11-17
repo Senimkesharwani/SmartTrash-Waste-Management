@@ -1,0 +1,51 @@
+{% load static %}
+{% include 'common/head.html' %}
+{% include 'common/navbar.html' %}
+
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+  <main class="flex-grow flex justify-center items-center px-4 py-16">
+    <div class="max-w-md w-full bg-white shadow-lg border border-gray-200 rounded-2xl px-10 py-8">
+      <!-- Heading -->
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-extrabold text-gray-900">
+          Welcome back to <span class="text-indigo-600">SmartTrash</span>
+        </h1>
+        <p class="text-sm text-gray-500 mt-2">Log in to your account and manage waste requests efficiently.</p>
+      </div>
+
+      <!-- Login Form -->
+      <form method="post" action="/login_process/" class="flex flex-col gap-5">
+        {% csrf_token %}
+        <div>
+          <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+          <input type="email" id="email" name="email" required
+            class="block w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="Enter your email">
+        </div>
+
+        <div>
+          <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+          <input type="password" id="password" name="password" required
+            class="block w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="Enter your password">
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-8 py-2 rounded-lg transition-all shadow-md">
+            Log In
+          </button>
+        </div>
+      </form>
+
+      <!-- Footer Links -->
+      <div class="text-center text-sm text-gray-600 mt-6">
+        Don’t have an account?
+        <a href="/signup/" class="text-indigo-600 hover:underline font-semibold">Sign up</a>
+      </div>
+    </div>
+  </main>
+
+  {% include 'common/footer.html' %}
+</body>
+</html>

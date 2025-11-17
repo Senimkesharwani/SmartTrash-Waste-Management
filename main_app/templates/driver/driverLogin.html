@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Login</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #f9fafb;
+    }
+
+    .content {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'common/navbar.html' %}
+
+  <div class="flex justify-center items-center h-full py-16">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+      <h1 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Driver Login</h1>
+
+      <!-- LOGIN FORM -->
+      <form method="POST" action="{% url 'driver_login_process' %}">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label for="loginNumber" class="block text-gray-700 font-bold mb-2">Driver Number:</label>
+          <input type="text" id="loginNumber" name="number" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200">
+        </div>
+
+        <div class="mb-6">
+          <label for="loginPassword" class="block text-gray-700 font-bold mb-2">Password:</label>
+          <input type="password" id="loginPassword" name="password" required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-200">
+        </div>
+
+        <div class="flex justify-center">
+          <button type="submit"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition">
+            Login
+          </button>
+        </div>
+      </form>
+
+      {% if messages %}
+      <div class="mt-6">
+        {% for message in messages %}
+        <div
+          class="p-3 rounded-md text-center {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% include 'common/footer.html' %}
+</body>
+
+</html>

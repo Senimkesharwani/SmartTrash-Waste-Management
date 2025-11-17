@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Dynamic Page Title -->
+  <title>{% block title %}SmartTrash - A Modern Waste Management System{% endblock %}</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'public/images/bin.png' %}">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="SmartTrash - A modern AI-powered waste management system for efficient and sustainable smart cities.">
+  <meta name="keywords" content="SmartTrash, waste management, recycling, eco-friendly, Django, Tailwind, Smart City">
+  <meta name="author" content="SmartTrash Team">
+
+  <!-- Custom Styles -->
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #f9fafb;
+    }
+
+    .content {
+      flex: 1 0 auto;
+    }
+
+    footer {
+      flex-shrink: 0;
+    }
+
+    /* Sidebar Styles */
+    #sidebar {
+      width: 250px;
+      height: 100%;
+      background-color: #1f2937;
+      color: #fff;
+      position: fixed;
+      top: 70px;
+      left: 0;
+    }
+
+    #sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #sidebar ul li {
+      padding: 10px;
+      border-bottom: 1px solid #374151;
+    }
+
+    #sidebar ul li a {
+      color: #d1d5db;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    #sidebar ul li a:hover {
+      background-color: #374151;
+      color: #fff;
+    }
+
+    #content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    /* Processing Overlay */
+    #processing {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(242, 242, 242, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-image: url("{% static 'public/images/processing.gif' %}");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 15% auto;
+      z-index: 50;
+    }
+
+    /* Modal blur & animation */
+    .bg-opacity-75 {
+      backdrop-filter: blur(5px);
+    }
+
+    .animate-spin {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">

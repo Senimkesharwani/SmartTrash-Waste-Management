@@ -1,0 +1,31 @@
+{% load static %}
+<header class="text-gray-600 body-font bg-white shadow-md">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <!-- Logo and Brand -->
+    <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <!-- ✅ Correct static path for image -->
+      <img class="h-8 w-auto" src="{% static 'public/images/bin.png' %}" alt="SmartTrash Logo">
+      <span class="ml-3 text-2xl font-extrabold text-indigo-600">SmartTrash</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a href="/driver/" class="mr-5 hover:text-indigo-600 font-semibold transition-colors duration-200">Driver Login</a>
+      <a href="/admin/login/" class="mr-5 hover:text-indigo-600 font-semibold transition-colors duration-200">Admin Login</a>
+      <a href="/contact/" class="mr-5 hover:text-indigo-600 font-semibold transition-colors duration-200">Contact Us</a>
+      <a href="/report-bug/" class="mr-5 hover:text-indigo-600 font-semibold transition-colors duration-200">Report Bug</a>
+    </nav>
+
+    <!-- Login Button -->
+    <a href="/login/">
+      <button
+        class="inline-flex items-center bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-white text-base font-semibold mt-4 md:mt-0 transition-all duration-200">
+        Login
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </a>
+  </div>
+</header>

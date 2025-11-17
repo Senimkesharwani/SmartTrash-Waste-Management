@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartTrash - Waste Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  {% include 'common/navbar.html' %}
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 text-white py-20">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-extrabold mb-4">Welcome to <span class="text-yellow-300">SmartTrash</span></h1>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">
+        A modern and intelligent waste management platform that connects citizens, drivers, and administrators
+        efficiently.
+      </p>
+      <div class="space-x-4">
+        <a href="/signup/"
+          class="bg-white text-green-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition">
+          Sign Up
+        </a>
+        <a href="/login/"
+          class="bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition">
+          Login
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Core Features</h2>
+      <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
+
+        <div class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <img src="{% static 'images/bin.png' %}" alt="Smart Collection" class="w-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold text-center mb-2">Smart Waste Collection</h3>
+          <p class="text-gray-600 text-center">Automated scheduling and real-time tracking of waste pickup requests.</p>
+        </div>
+
+        <div class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <img src="{% static 'images/driver.png' %}" alt="Driver Dashboard" class="w-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold text-center mb-2">Driver Dashboard</h3>
+          <p class="text-gray-600 text-center">Efficient route management for drivers with instant request updates.</p>
+        </div>
+
+        <div class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <img src="{% static 'images/admin.png' %}" alt="Admin Management" class="w-16 mx-auto mb-4">
+          <h3 class="text-xl font-semibold text-center mb-2">Admin Panel</h3>
+          <p class="text-gray-600 text-center">Monitor operations, assign drivers, and manage city-wide cleanliness.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-emerald-600 text-white py-16 text-center">
+    <h2 class="text-3xl font-bold mb-4">Join us in keeping our city clean and green 🌿</h2>
+    <a href="/signup/"
+      class="bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">
+      Get Started
+    </a>
+  </section>
+
+  <!-- Footer -->
+  {% include 'common/footer.html' %}
+</body>
+</html>
